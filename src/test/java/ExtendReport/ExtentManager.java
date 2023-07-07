@@ -9,12 +9,14 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 public class ExtentManager {
-    public static ExtentReports extent;
+  public static ExtentReports extent;
     public static Platform platform;
     private static String reportFileName = "ExtentReports.html";
     private static String macPath = System.getProperty("user.dir") + "/TestReport";
+    private static String linuxPath = System.getProperty("user.dir") + "//TestReport"; 
     private static String windowsPath = System.getProperty("user.dir") + "\\TestReport";
     private static String macReportFileLoc = macPath + "/" + reportFileName;
+    private static String linuxReportFileLoc = linuxPath + "//" + reportFileName;
     private static String winReportFileLoc = windowsPath + "\\" + reportFileName;
 
     public static ExtentReports getInstance() {
@@ -47,6 +49,11 @@ public class ExtentManager {
                 reportFileLocation = macReportFileLoc;
                 createReportPath(macPath);
                 System.out.println("ExtentReport Path for MAC: " + macPath + "\n");
+                break;
+                case LINUX:
+                reportFileLocation = linuxReportFileLoc;
+                createReportPath(linuxPath);
+                System.out.println("ExtentReport Path for linux: " + linuxPath + "\n");
                 break;
             case WINDOWS:
                 reportFileLocation = winReportFileLoc;
